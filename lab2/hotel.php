@@ -1,13 +1,16 @@
 <?php
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+require 'connect.php';
+    if (isset($_POST['add'])) {
+        $Visiteur = $_POST['Visiteur'];
         $chambre = $_POST['chambre'];
+        $lit = $_POST['lit'];
+        $typeChambre = $_POST['typeChambre'];
         $repas = $_POST['repas'];
-        $Add = $_POST['Add'];
-        $Delete = $_POST['Delete'];
-        $Update = $_POST['Update'];
-        $Cancel = $_POST['Cancel'];
+        $debut = $_POST['debut'];
+        $fin = $_POST['fin'];
+        $total = $_POST['total'];
+        echo "<h1>$Visiteur</h1>";
     }
- 
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -20,22 +23,22 @@
     </head>
 
     <body>
-        <form action="" method="POST">
+        <form action="" method="post">
             <div class="All">
                 <div class="hotel">
                     <h1>HOTEl</h1>
                 </div>
                 <div class="card">
                     <p>Visiteur</p>
-                    <input type="text" placeholder="Visiteur">
+                    <input type="text" placeholder="Visiteur" name="Visiteur">
                 </div>
                 <div class="card">
                     <p>Chombre</p>
-                    <input type="number" placeholder="Chombre">
+                    <input type="number" placeholder="Chombre" name="chambre">
                 </div>
                 <div class="card">
                     <p>Type De Chambre</p>
-                    <select name="chambre">
+                    <select name="typeChambre">
                         <option value="Standard">Standard</option>
                         <option value="Superieure">Superieure</option>
                         <option value="Deluxe">Deluxe</option>
@@ -43,7 +46,7 @@
                 </div>
                 <div class="card">
                     <p>Lits</p>
-                    <input type="number" placeholder="Lits">
+                    <input type="number" placeholder="Lits" name="lit">
                 </div>
                 <div class="card">
                     <p>Les Repas</p>
@@ -56,22 +59,22 @@
                 <div class="dates">
                     <div class="card">
                         <p>Date de debut</p>
-                        <input type="date">
+                        <input type="date" name="debut">
                     </div>
                     <div class="card">
                         <p>Date de fin</p>
-                        <input type="date">
+                        <input type="date" name="fin">
                     </div>
                 </div>
                 <div class="cardTotal">
                     <p style="font-size: 20px;">Prix Total</p>
-                    <input type="number" placeholder="Prix Total" class="total">
+                    <input type="number" placeholder="Prix Total" class="total" name="total">
                 </div>
                 <div class="button">
-                    <button type="submit" name="Add">Add</button>
-                    <button type="submit" name="Delete">Delete</button>
-                    <button type="submit" name="Update">Update</button>
-                    <button type="submit" name="Cancel">Cancel</button>
+                    <button type="submit" name="add">Add</button>
+                    <button type="submit" name="delete">Delete</button>
+                    <button type="submit">Update</button>
+                    <button type="submit">Cancel</button>
                 </div>
             </div>
         </form>
