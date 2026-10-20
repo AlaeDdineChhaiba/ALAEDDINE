@@ -1,7 +1,7 @@
 <?php
-require 'connect.php';
+    require 'connect.php';
     if (isset($_POST['add'])) {
-        $Visiteur = $_POST['Visiteur'];
+        $visiteur = $_POST['visiteur'];
         $chambre = $_POST['chambre'];
         $lit = $_POST['lit'];
         $typeChambre = $_POST['typeChambre'];
@@ -9,7 +9,9 @@ require 'connect.php';
         $debut = $_POST['debut'];
         $fin = $_POST['fin'];
         $total = $_POST['total'];
-        echo "<h1>$Visiteur</h1>";
+        $sql = "INSERT INTO `command`(`visiteur`, `chambre`, `typeChambre`, `lit`, `repas`, `debut`, `fin`, `total`) VALUES (?,?,?,?,?,?,?,?)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$visiteur, $chambre, $typeChambre,  $lit, $repas, $debut, $fin, $total]);
     }
 ?>
     <!DOCTYPE html>
@@ -30,7 +32,7 @@ require 'connect.php';
                 </div>
                 <div class="card">
                     <p>Visiteur</p>
-                    <input type="text" placeholder="Visiteur" name="Visiteur">
+                    <input type="text" placeholder="Visiteur" name="visiteur">
                 </div>
                 <div class="card">
                     <p>Chombre</p>
@@ -68,7 +70,7 @@ require 'connect.php';
                 </div>
                 <div class="cardTotal">
                     <p style="font-size: 20px;">Prix Total</p>
-                    <input type="number" placeholder="Prix Total" class="total" name="total">
+                    <input type="number" placeholder="Prix Total" class="total" name="total" >
                 </div>
                 <div class="button">
                     <button type="submit" name="add">Add</button>
